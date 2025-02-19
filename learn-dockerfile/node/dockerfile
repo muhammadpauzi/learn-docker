@@ -1,0 +1,22 @@
+# Menentukan image dasar yang akan digunakan untuk membangun image baru.
+FROM alpine:latest
+
+# Menjalankan perintah di dalam container selama proses pembangunan image.
+RUN mkdir asd
+
+# Mengatur direktori kerja di dalam container.
+WORKDIR asd
+
+# Menjalankan perintah di dalam container selama proses pembangunan image.
+RUN echo "hello, world" >> ./output.txt
+
+# Menyalin file atau direktori dari host ke dalam container.
+COPY ./index.txt ./indexincontainer.txt
+
+# Menentukan perintah yang akan dijalankan ketika container dijalankan.
+CMD cat ./indexincontainer.txt
+
+# -t parameter tag/nama
+# docker build -t imagename -f ./dockerfile .
+# docker build -t imagename .
+# docker run -d --name containerimagename imagename
